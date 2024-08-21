@@ -3,92 +3,126 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>I Love You</title>
+    <title>Starry Love</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #fff0f5;
-            text-align: center;
+            background-color: #000;
+            color: #fff;
             margin: 0;
             padding: 0;
+            overflow: hidden;
+            position: relative;
+            height: 100vh;
         }
 
-        h1 {
-            color: #e91e63;
-            font-size: 3em;
+        h1, h2 {
+            text-align: center;
+            font-size: 2em;
             margin: 20px 0;
         }
 
+        .stars {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: #fff;
+            border-radius: 50%;
+            animation: twinkle 3s infinite ease-in-out;
+        }
+
+        @keyframes twinkle {
+            0%, 100% {
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+        }
+
         .content-wrapper {
-            max-width: 1000px;
-            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 80vh;
             padding: 20px;
         }
 
         p {
-            font-size: 18px;
-            color: #555;
-            margin: 5px 0;
+            font-size: 2em;
+            color: #ff69b4;
+            margin: 10px 0;
         }
 
-        .flower, .heart {
-            position: absolute;
-            width: 50px;
-            height: 50px;
-            opacity: 0.8;
-            animation: float 10s infinite ease-in-out;
-            z-index: -1; /* Ensures floating elements stay in the background */
+        .flowers {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 50px;
         }
 
-        .flower {
-            background-image: url('https://i.imgur.com/oYtW7HI.png');
-            background-size: cover;
-        }
-
-        .heart {
-            background-image: url('https://i.imgur.com/lxx4dYX.png');
-            background-size: cover;
-        }
-
-        @keyframes float {
-            0% {
-                transform: translateY(100vh) rotate(0deg);
-            }
-            100% {
-                transform: translateY(-100vh) rotate(360deg);
-            }
+        .flowers img {
+            width: 100px;
+            margin: 0 10px;
         }
 
         h2 {
-            font-size: 2em;
+            font-size: 2.5em;
             color: #ff69b4;
-            margin-top: 50px;
         }
     </style>
 </head>
 <body>
-    <h1>I LOVE YOU</h1>
-    
-    <div class="content-wrapper" id="content"></div>
-    
-    <h2>TDU MASHUM PLASH</h2>
+    <!-- Star background -->
+    <div class="stars" id="stars"></div>
 
-    <!-- Flower and Heart Elements -->
-    <div class="flower" style="left: 10%; animation-duration: 8s;"></div>
-    <div class="flower" style="left: 50%; animation-duration: 12s;"></div>
-    <div class="flower" style="left: 80%; animation-duration: 10s;"></div>
-    <div class="heart" style="left: 20%; animation-duration: 14s;"></div>
-    <div class="heart" style="left: 40%; animation-duration: 9s;"></div>
-    <div class="heart" style="left: 70%; animation-duration: 11s;"></div>
+    <!-- Main content -->
+    <div class="content-wrapper">
+        <p>TDU SHUM AMA SHUM HALA MASHUM BIQO</p>
+        <p>TDU SHUM AMA SHUM HALA MASHUM BIQO</p>
+        <p>TDU SHUM AMA SHUM HALA MASHUM BIQO</p>
+        <p>TDU SHUM AMA SHUM HALA MASHUM BIQO</p>
+        <p>TDU SHUM AMA SHUM HALA MASHUM BIQO</p>
+        <p>TDU SHUM AMA SHUM HALA MASHUM BIQO</p>
+        <p>TDU SHUM AMA SHUM HALA MASHUM BIQO</p>
+        <p>TDU SHUM AMA SHUM HALA MASHUM BIQO</p>
+    </div>
+
+    <!-- Flower and final message -->
+    <div class="flowers">
+        <img src="https://i.imgur.com/oYtW7HI.png" alt="Flower 1">
+        <img src="https://i.imgur.com/oYtW7HI.png" alt="Flower 2">
+        <img src="https://i.imgur.com/oYtW7HI.png" alt="Flower 3">
+    </div>
+    <h2>TDU SHUM HALA MASHUM AESHEH PLASH</h2>
 
     <script>
-        const contentDiv = document.getElementById("content");
-        const text = "I LOVE YOU SO MUCH MORE TDU SHUM HALA MASHUM MY BIQO";
-        
-        for (let i = 0; i < 888; i++) {
-            const para = document.createElement("p");
-            para.textContent = text;
-            contentDiv.appendChild(para);
+        const starContainer = document.getElementById("stars");
+
+        // Create 100 stars
+        for (let i = 0; i < 100; i++) {
+            const star = document.createElement("div");
+            star.classList.add("star");
+
+            // Random position for each star
+            star.style.top = Math.random() * 100 + "vh";
+            star.style.left = Math.random() * 100 + "vw";
+
+            // Random animation duration
+            star.style.animationDuration = Math.random() * 3 + 2 + "s";
+
+            starContainer.appendChild(star);
         }
     </script>
 </body>
